@@ -2,11 +2,11 @@ set terminal pngcairo transparent enhanced font "arial,10" fontscale 1.0 size 50
 set zeroaxis
 
 a = 1
-k = 3
-r(t) = a * cos(k * t)
+k = 1
+r(t) = a * cos(k * t)**2
 phi_grad = phi / pi * 180
 graph_title = sprintf("r=a cos(k*phi), a=%0.1f, k=%0.1f", a, k)
-point_title = sprintf("phi=%0.1f, r=%0.1f*cos(%0.1f*%0.1f)=%0.2f", phi_grad, a, k, phi_grad, r(phi))
+point_title = sprintf("phi=%0.1f, r=%0.1f*cos(%0.1f*%0.1f)^2=%0.2f", phi_grad, a, k, phi_grad, r(phi))
 left = -1.5
 right = 1.5
 bottom = -1.5
@@ -14,7 +14,7 @@ top = 1.5
 
 set parametric
 system('mkdir -p animation')
-outfile = sprintf('animation/rose3%0.1f.png', phi + 100)
+outfile = sprintf('animation/rose2%0.1f.png', phi + 100)
 set output outfile
 set termoption dash
 set for [i=1:5] linetype i lt i
